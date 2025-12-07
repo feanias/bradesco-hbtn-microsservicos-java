@@ -15,8 +15,8 @@ public class UserController {
 	
 	@GetMapping("/user-id/{id}")
 	public String findUserById(@PathVariable int id) {
-		String message = "Id válido";
-		if(id > 200) {
+		String message = "You have entered valid ID";
+		if(id > 0 && id < 100) {
 			return message;
 		}else {
 			throw new UserIdException(String.valueOf(id));
@@ -25,8 +25,8 @@ public class UserController {
 	
 	@GetMapping("/user-name/{userName}")
 	public String findUserByName (@PathVariable String userName) {
-		String message = "Username Inválido";
-		if(userName.length() <= 3) {
+		String message = "You have entered valid USERNAME";
+		if(userName.length() > 3 && userName.length() < 15) {
 			return message;
 		}else {
 			throw new UserNameException(userName);
@@ -35,7 +35,7 @@ public class UserController {
 	
 	@GetMapping("/user-cpf/{cpf}")
 	public String findUserByCPF (@PathVariable String cpf) {
-		 String msg = "CPF Inválido";
+		 String msg = "You have entered valid CPF";
 		 if (isCPF(cpf)) {
 	            return msg;
 	        } else {
